@@ -1,4 +1,5 @@
 import streamlit
+import requests
 import pandas as pd
 
 streamlit.title('My Parents New Healthy Diner')
@@ -13,6 +14,10 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 # read CSV file from S3 bucket and display as a df table
 my_fruit_list = pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt')
 my_fruit_list = my_fruit_list.set_index('Fruit')
+
+# display Fruityvice api response
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
 
 # create pick list so that user can pick the fruits they want to include
 fruits_selected = streamlit.multiselect('Pick some fruits:', list(my_fruit_list.index), ['Avocado', 'Strawberries'])
