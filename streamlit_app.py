@@ -1,5 +1,5 @@
 # troubleshooting - dont run anything
-streamlit.stop()
+# streamlit.stop()
 
 # required libraries
 import streamlit
